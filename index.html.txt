@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>My Portfolio</title>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Hello, I'm Ehsan</h1>
+  <p>Web Developer | MCA Student</p>
+  <a href="#projects" class="btn">View Projects</a>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <h2>About Me</h2>
+  <p>I am a passionate developer learning AI & Web Development.</p>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <h2>My Projects</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <i class="fa fa-code"></i>
+      <h3>Project 1</h3>
+      <p>Portfolio Website</p>
+    </div>
+
+    <div class="card">
+      <i class="fa fa-laptop"></i>
+      <h3>Project 2</h3>
+      <p>Python Quiz App</p>
+    </div>
+
+    <div class="card">
+      <i class="fa fa-chart-bar"></i>
+      <h3>Project 3</h3>
+      <p>Data Visualization</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <h2>Contact Me</h2>
+  <p>Email: example@gmail.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Ehsan | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

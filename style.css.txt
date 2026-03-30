@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+section {
+  padding: 40px;
+  text-align: center;
+}
+
+/* HERO */
+.hero {
+  background: #007bff;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.btn {
+  background: white;
+  color: #007bff;
+  padding: 10px 20px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+/* PROJECTS */
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #f4f4f4;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  border-radius: 10px;
+}
+
+.card i {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: white;
+  padding: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
