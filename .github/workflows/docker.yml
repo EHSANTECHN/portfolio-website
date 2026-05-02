@@ -14,12 +14,12 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Login to DockerHub
-        run: echo "${{ secrets.dckr_pat_rBrIj08rW2BBdkbdO2IjowsgGMM }}" | docker login -u "${{ secrets.ehsantechn }}" --password-stdin
+        run: echo "${{ secrets.dckr_pat_rBrIj08rW2BBdkbdO2IjowsgGMM }}" | docker login -u "${{ secrets.docker login -u ehsantechn }}" --password-stdin
 
       - name: Build Docker Image
         run: |
-          docker build -t ${{ secrets.ehsantechn }}/portfolio .
+          docker build -t ${{ secrets.docker login -u ehsantechn }}/portfolio .
 
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.ehsantechn }}/portfolio
+          docker push ${{ secrets.docker login -u ehsantechn }}/portfolio
