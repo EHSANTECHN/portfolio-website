@@ -46,24 +46,59 @@
     <a href="#">Live</a> |
     <a href="#">GitHub</a>
   </div>
-
 </section>
 
 <!-- CONTACT -->
 <section class="contact">
   <h2>Contact Me</h2>
+
   <p>Email: pathead08@gmail.com</p>
 
-  <div class="social">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
+  <form id="contact-form">
+    <input type="text" name="name" placeholder="Your Name" required><br><br>
+    
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    
+    <textarea name="message" placeholder="Your Message" required></textarea><br><br>
+    
+    <button type="submit">Send Message</button>
+  </form>
 </section>
+
+<!-- SOCIAL -->
+<div class="social">
+  <a href="#"><i class="fab fa-github"></i></a>
+  <a href="#"><i class="fab fa-linkedin"></i></a>
+</div>
 
 <!-- RESUME -->
 <section class="resume">
   <a href="resume.pdf" download class="btn">Download Resume</a>
 </section>
+
+<!-- ✅ EMAILJS SCRIPT (MOST IMPORTANT) -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+<script>
+  (function(){
+    emailjs.init("iZ3YWd4LYwA6ZsQCS"); // 
+  })();
+
+  document.getElementById("contact-form")
+    .addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      emailjs.sendForm(
+        "service_ye1g14p",   
+        "template_jgd82a8",    
+        this
+      ).then(() => {
+        alert("Message Sent Successfully!");
+      }, (error) => {
+        alert("Failed to send message");
+      });
+  });
+</script>
 
 </body>
 </html>
