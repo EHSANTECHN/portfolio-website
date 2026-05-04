@@ -10,15 +10,19 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
- <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 
 <body>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Hi, This is Ehsan </h1>
-  <p>DevOps & Web Developer</p>
+  <h1>Hi, This is Ehsan</h1>
+
+  <p>
+    <span id="typing"></span>
+  </p>
+
   <a href="#projects" class="btn">View Projects</a>
 </section>
 
@@ -76,12 +80,12 @@
   <a href="resume.pdf" download class="btn">Download Resume</a>
 </section>
 
-<!-- ✅ EMAILJS SCRIPT (MOST IMPORTANT) -->
+<!-- EMAILJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 <script>
   (function(){
-    emailjs.init("iZ3YWd4LYwA6ZsQCS"); // 
+    emailjs.init("iZ3YWd4LYwA6ZsQCS");
   })();
 
   document.getElementById("contact-form")
@@ -89,8 +93,8 @@
       e.preventDefault();
 
       emailjs.sendForm(
-        "service_ye1g14p",   
-        "template_jgd82a8",    
+        "service_ye1g14p",
+        "template_jgd82a8",
         this
       ).then(() => {
         alert("Message Sent Successfully!");
@@ -98,6 +102,49 @@
         alert("Failed to send message");
       });
   });
+
+  /* ===== HERO TYPING ANIMATION ===== */
+
+  const roles = [
+    "DevOps Engineer 🚀",
+    "Web Developer 💻",
+    "AWS & Docker Enthusiast ☁️",
+    "CI/CD Builder ⚙️"
+  ];
+
+  let i = 0;
+  let j = 0;
+  let currentText = "";
+  let isDeleting = false;
+
+  function typeEffect() {
+    const typing = document.getElementById("typing");
+
+    if (i < roles.length) {
+      if (!isDeleting && j <= roles[i].length) {
+        currentText = roles[i].substring(0, j++);
+      } else if (isDeleting && j >= 0) {
+        currentText = roles[i].substring(0, j--);
+      }
+
+      typing.innerHTML = currentText;
+
+      if (j === roles[i].length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 1000);
+        return;
+      }
+
+      if (j === 0) {
+        isDeleting = false;
+        i = (i + 1) % roles.length;
+      }
+    }
+
+    setTimeout(typeEffect, isDeleting ? 50 : 100);
+  }
+
+  typeEffect();
 </script>
 
 </body>
