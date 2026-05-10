@@ -284,3 +284,42 @@ h1 {
   }
 
 }
+/* ===== DEPLOYMENT STATUS ===== */
+
+.status-section {
+  padding: 60px 20px;
+}
+
+.status-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.status-card {
+  background: #112240;
+  padding: 25px;
+  width: 220px;
+
+  border-radius: 12px;
+
+  transition: 0.3s;
+}
+
+.status-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 0 20px rgba(100,255,218,0.2);
+}
+
+.status-card h3 {
+  margin-bottom: 10px;
+  color: #64ffda;
+}
+
+.status-card p {
+  color: white;
+  font-size: 18px;
+}
