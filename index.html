@@ -3,130 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Ehsan Portfolio</title>
 
-  <!-- Google Font -->
+  <!-- GOOGLE FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=20">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="logo">Ehsan.dev</div>
-
-  <ul>
-    <li><a href="#home" class="nav-link active">Home</a></li>
-    <li><a href="#about" class="nav-link">About</a></li>
-    <li><a href="#projects" class="nav-link">Projects</a></li>
-    <li><a href="#contact" class="nav-link">Contact</a></li>
-  </ul>
-</nav>
-
 <!-- HERO -->
-<section id="home" class="hero">
+
+<section class="hero">
+
   <h1>Hi, This is Ehsan</h1>
 
   <p>
     <span id="typing"></span>
   </p>
 
-  <a href="#projects" class="btn">View Projects</a>
+  <a href="#projects" class="btn">
+    View Projects
+  </a>
+
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="about">
+
+<section class="about">
+
   <h2>About Me</h2>
 
   <p>
-    I build scalable web apps and deploy them using Docker & AWS.
+    I build scalable web apps and deploy them
+    using Docker & AWS.
   </p>
 
   <div class="skills">
+
     <span>HTML</span>
     <span>CSS</span>
     <span>JavaScript</span>
     <span>Docker</span>
     <span>AWS</span>
+
   </div>
+
+</section>
+
+<!-- DEPLOYMENT STATUS -->
+
+<section class="status-section">
+
+  <h2>Deployment Status</h2>
+
+  <div class="status-grid">
+
+    <div class="status-card">
+      <h3>EC2 Server</h3>
+      <p id="ec2-status">Online 🟢</p>
+    </div>
+
+    <div class="status-card">
+      <h3>Docker Container</h3>
+      <p id="docker-status">Running 🚀</p>
+    </div>
+
+    <div class="status-card">
+      <h3>Last Deployment</h3>
+      <p id="deploy-status">Successful ✅</p>
+    </div>
+
+    <div class="status-card">
+      <h3>Server Uptime</h3>
+      <p id="uptime">24h 12m</p>
+    </div>
+
+  </div>
+
 </section>
 
 <!-- PROJECTS -->
+
 <section id="projects" class="projects">
 
   <h2>Projects</h2>
 
-  <!-- FILTERS -->
-  <div class="filters">
+  <div class="card">
 
-    <button class="filter-btn active" data-filter="all">
-      All
-    </button>
+    <h3>Portfolio Website</h3>
 
-    <button class="filter-btn" data-filter="devops">
-      DevOps
-    </button>
+    <p>
+      Hosted using AWS EC2 + Docker + CI/CD
+    </p>
 
-    <button class="filter-btn" data-filter="aws">
-      AWS
-    </button>
-
-    <button class="filter-btn" data-filter="web">
-      Web
-    </button>
-
-    <button class="filter-btn" data-filter="ai">
-      AI
-    </button>
+    <a href="#">Live</a> |
+    <a href="#">GitHub</a>
 
   </div>
 
-  <!-- PROJECT GRID -->
-  <div class="project-grid">
-
-    <div class="card" data-category="devops aws web">
-      <h3>Portfolio Website</h3>
-
-      <p>
-        Hosted using AWS EC2 + Docker + CI/CD
-      </p>
-
-      <a href="#">Live</a> |
-      <a href="#">GitHub</a>
-    </div>
-
-    <div class="card" data-category="ai web">
-      <h3>Celebrity Face Detection</h3>
-
-      <p>
-        AI-powered face recognition project
-      </p>
-
-      <a href="#">Live</a> |
-      <a href="#">GitHub</a>
-    </div>
-
-    <div class="card" data-category="web">
-      <h3>Quiz App</h3>
-
-      <p>
-        Interactive JavaScript Quiz Application
-      </p>
-
-      <a href="#">Live</a> |
-      <a href="#">GitHub</a>
-    </div>
-
-  </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact">
+
+<section class="contact">
 
   <h2>Contact Me</h2>
 
@@ -134,23 +120,36 @@
 
   <form id="contact-form">
 
-    <input type="text" name="name"
-      placeholder="Your Name" required>
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+    >
 
-    <input type="email" name="email"
-      placeholder="Your Email" required>
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+    >
 
-    <textarea name="message"
-      placeholder="Your Message" required></textarea>
+    <textarea
+      name="message"
+      placeholder="Your Message"
+      required
+    ></textarea>
 
     <button type="submit">
       Send Message
     </button>
 
   </form>
+
 </section>
 
 <!-- SOCIAL -->
+
 <div class="social">
 
   <a href="#">
@@ -164,13 +163,17 @@
 </div>
 
 <!-- RESUME -->
+
 <section class="resume">
+
   <a href="resume.pdf" download class="btn">
     Download Resume
   </a>
+
 </section>
 
 <!-- EMAILJS -->
+
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 <script>
@@ -194,22 +197,23 @@
 
         alert("Message Sent Successfully!");
 
-        this.reset();
-
       }, (error) => {
 
         alert("Failed to send message");
 
       });
+
   });
 
-  /* ===== TYPING EFFECT ===== */
+  /* ===== HERO TYPING ===== */
 
   const roles = [
+
     "DevOps Engineer 🚀",
     "Web Developer 💻",
     "AWS & Docker Enthusiast ☁️",
     "CI/CD Builder ⚙️"
+
   ];
 
   let i = 0;
@@ -229,10 +233,13 @@
         currentText =
           roles[i].substring(0, j++);
 
-      } else if (isDeleting && j >= 0) {
+      }
+
+      else if (isDeleting && j >= 0) {
 
         currentText =
           roles[i].substring(0, j--);
+
       }
 
       typing.innerHTML = currentText;
@@ -251,96 +258,43 @@
         isDeleting = false;
 
         i = (i + 1) % roles.length;
+
       }
+
     }
 
-    setTimeout(typeEffect,
-      isDeleting ? 50 : 100);
+    setTimeout(
+      typeEffect,
+      isDeleting ? 50 : 100
+    );
+
   }
 
   typeEffect();
 
-  /* ===== PROJECT FILTER ===== */
+  /* ===== LIVE UPTIME ===== */
 
-  const filterButtons =
-    document.querySelectorAll(".filter-btn");
+  let minutes = 12;
+  let hours = 24;
 
-  const cards =
-    document.querySelectorAll(".card");
+  function updateUptime() {
 
-  filterButtons.forEach(button => {
+    minutes++;
 
-    button.addEventListener("click", () => {
+    if (minutes >= 60) {
 
-      document.querySelector(".filter-btn.active")
-        .classList.remove("active");
+      hours++;
+      minutes = 0;
 
-      button.classList.add("active");
+    }
 
-      const filter =
-        button.getAttribute("data-filter");
+    document.getElementById("uptime")
+      .innerText =
+      `${hours}h ${minutes}m`;
 
-      cards.forEach(card => {
+  }
 
-        if (
-          filter === "all" ||
-          card.getAttribute("data-category")
-            .includes(filter)
-        ) {
-
-          card.style.display = "block";
-
-        } else {
-
-          card.style.display = "none";
-        }
-
-      });
-
-    });
-
-  });
-
-  /* ===== ACTIVE NAVBAR ===== */
-
-  const sections =
-    document.querySelectorAll("section");
-
-  const navLinks =
-    document.querySelectorAll(".nav-link");
-
-  window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-      const sectionTop =
-        section.offsetTop - 150;
-
-      if (pageYOffset >= sectionTop) {
-
-        current =
-          section.getAttribute("id");
-      }
-
-    });
-
-    navLinks.forEach(link => {
-
-      link.classList.remove("active");
-
-      if (
-        link.getAttribute("href")
-        === `#${current}`
-      ) {
-
-        link.classList.add("active");
-      }
-
-    });
-
-  });
+  setInterval(updateUptime, 60000);
 
 </script>
 
