@@ -1,148 +1,355 @@
-/* ===== GLOBAL ===== */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: #0a192f !important;
-  color: #ffffff !important;
-  text-align: center;
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
-section {
-  padding: 60px 20px;
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0a192f;
+  color:white;
+  transition:0.4s ease;
+  overflow-x:hidden;
 }
 
-/* ===== HERO ===== */
-.hero {
-  background: linear-gradient(135deg, #1e3a8a, #9333ea);
+/* =========================
+   THEME TOGGLE
+========================= */
+
+#theme-toggle{
+  position:fixed;
+  top:20px;
+  right:20px;
+  width:50px;
+  height:50px;
+  border:none;
+  border-radius:50%;
+  background:#64ffda;
+  color:black;
+  font-size:20px;
+  cursor:pointer;
+  z-index:1000;
+  transition:0.3s;
+  box-shadow:0 0 15px rgba(100,255,218,0.5);
 }
 
-h1 {
-  font-size: 3rem;
+#theme-toggle:hover{
+  transform:scale(1.1);
+  background:white;
 }
 
-/* ===== BUTTON ===== */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #64ffda;
-  color: #0a192f;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: 0.3s;
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  background:linear-gradient(
+    135deg,
+    #0a192f,
+    #112240
+  );
 }
 
-.btn:hover {
-  background: #52e0c4;
-  transform: scale(1.05);
+.hero h1{
+  font-size:60px;
+  margin-bottom:20px;
+  animation:fadeDown 1s ease;
 }
 
-/* ===== SKILLS ===== */
-.skills span {
-  margin: 5px;
-  padding: 8px 12px;
-  background: #112240 !important;
-  display: inline-block;
-  border-radius: 6px;
-  transition: 0.3s;
+.hero p{
+  font-size:26px;
+  color:#64ffda;
+  margin-bottom:30px;
+  min-height:40px;
 }
 
-.skills span:hover {
-  background: #1e3a8a;
+.btn{
+  padding:14px 30px;
+  background:#64ffda;
+  color:black;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(100,255,218,0.4);
 }
 
-/* ===== PROJECT CARD ===== */
-.card {
-  background: #112240 !important;
-  margin: 15px auto;
-  padding: 20px;
-  max-width: 320px;
-  border-radius: 12px;
-  transition: 0.3s;
+.btn:hover{
+  transform:translateY(-5px);
+  background:white;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+/* =========================
+   SECTIONS
+========================= */
+
+section{
+  padding:100px 10%;
 }
 
-/* ===== CONTACT ===== */
-.contact {
-  text-align: center;
+h2{
+  font-size:40px;
+  margin-bottom:30px;
+  color:#64ffda;
 }
 
-.contact p {
-  color: #8892b0;
+/* =========================
+   ABOUT
+========================= */
+
+.about p{
+  font-size:18px;
+  line-height:1.8;
+  max-width:700px;
 }
 
-/* ===== FORM ===== */
-#contact-form {
-  max-width: 400px;
-  margin: auto;
+.skills{
+  margin-top:30px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
 }
 
-#contact-form input,
-#contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 8px !important;
-  outline: none;
-  background: #112240 !important;
-  color: white;
-  font-size: 14px;
+.skills span{
+  padding:12px 20px;
+  background:#112240;
+  border-radius:30px;
+  transition:0.3s;
+  border:1px solid rgba(255,255,255,0.1);
 }
 
-#contact-form input::placeholder,
-#contact-form textarea::placeholder {
-  color: #8892b0;
+.skills span:hover{
+  transform:translateY(-5px);
+  background:#64ffda;
+  color:black;
 }
 
-#contact-form textarea {
-  min-height: 120px;
-  resize: none;
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+  background:#081221;
 }
 
-/* ===== FORM BUTTON ===== */
-#contact-form button {
-  width: 100%;
-  padding: 12px;
-  background: #64ffda !important;
-  color: #0a192f !important;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+.card{
+  background:#112240;
+  padding:30px;
+  margin-top:25px;
+  border-radius:20px;
+  transition:0.4s;
+  border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
-#contact-form button:hover {
-  background: #52e0c4;
-  transform: scale(1.03);
+.card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 10px 30px rgba(100,255,218,0.2);
 }
 
-/* ===== SOCIAL ===== */
-.social {
-  margin-top: 30px;
+.card h3{
+  margin-bottom:15px;
+  color:#64ffda;
 }
 
-.social i {
-  font-size: 24px;
-  margin: 10px;
-  color: #64ffda;
-  transition: 0.3s;
+.card a{
+  color:#64ffda;
+  text-decoration:none;
 }
 
-.social i:hover {
-  color: white;
-  transform: scale(1.2);
-}
-#typing::after {
-  content: "|";
-  margin-left: 5px;
-  animation: blink 1s infinite;
+/* =========================
+   CONTACT
+========================= */
+
+.contact form{
+  margin-top:30px;
+  max-width:600px;
 }
 
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
+.contact input,
+.contact textarea{
+  width:100%;
+  padding:15px;
+  margin-bottom:20px;
+  border:none;
+  border-radius:10px;
+  background:#112240;
+  color:white;
+  outline:none;
+}
+
+.contact textarea{
+  height:150px;
+  resize:none;
+}
+
+.contact button{
+  padding:14px 25px;
+  border:none;
+  border-radius:10px;
+  background:#64ffda;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.contact button:hover{
+  background:white;
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin:40px 0;
+}
+
+.social a{
+  color:#64ffda;
+  font-size:30px;
+  transition:0.3s;
+}
+
+.social a:hover{
+  color:white;
+  transform:scale(1.2);
+}
+
+/* =========================
+   RESUME
+========================= */
+
+.resume{
+  text-align:center;
+  padding-bottom:100px;
+}
+
+/* =========================
+   TYPING CURSOR
+========================= */
+
+#typing::after{
+  content:"|";
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  0%,100%{
+    opacity:1;
+  }
+  50%{
+    opacity:0;
+  }
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+.light-mode{
+  background:white;
+  color:black;
+}
+
+.light-mode .hero{
+  background:linear-gradient(
+    135deg,
+    #f5f5f5,
+    #eaeaea
+  );
+}
+
+.light-mode .projects{
+  background:#f5f5f5;
+}
+
+.light-mode .card,
+.light-mode .skills span,
+.light-mode .contact input,
+.light-mode .contact textarea{
+  background:#e4e4e4;
+  color:black;
+}
+
+.light-mode h2,
+.light-mode .card h3,
+.light-mode .social a,
+.light-mode .hero p{
+  color:#0077ff;
+}
+
+.light-mode .btn{
+  background:#0077ff;
+  color:white;
+}
+
+.light-mode .btn:hover{
+  background:black;
+}
+
+.light-mode .contact button{
+  background:#0077ff;
+  color:white;
+}
+
+.light-mode .contact button:hover{
+  background:black;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeDown{
+
+  from{
+    opacity:0;
+    transform:translateY(-50px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .hero p{
+    font-size:20px;
+  }
+
+  h2{
+    font-size:30px;
+  }
+
+  section{
+    padding:80px 7%;
+  }
+
 }
