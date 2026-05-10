@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Portfolio</title>
 
   <!-- Google Font -->
@@ -11,14 +10,10 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- CSS -->
-<link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 
 <body>
-
-<!-- THEME TOGGLE -->
-<button id="theme-toggle">🌙</button>
 
 <!-- HERO -->
 <section class="hero">
@@ -34,11 +29,7 @@
 <!-- ABOUT -->
 <section class="about">
   <h2>About Me</h2>
-
-  <p>
-    I build scalable web apps and deploy them using
-    Docker, AWS and CI/CD pipelines.
-  </p>
+  <p>I build scalable web apps and deploy them using Docker & AWS.</p>
 
   <div class="skills">
     <span>HTML</span>
@@ -46,7 +37,6 @@
     <span>JavaScript</span>
     <span>Docker</span>
     <span>AWS</span>
-    <span>CI/CD</span>
   </div>
 </section>
 
@@ -57,17 +47,8 @@
   <div class="card">
     <h3>Portfolio Website</h3>
     <p>Hosted using AWS EC2 + Docker + CI/CD</p>
-
     <a href="#">Live</a> |
     <a href="#">GitHub</a>
-  </div>
-
-  <div class="card">
-    <h3>DevOps Deployment</h3>
-    <p>
-      Automated deployment pipeline using GitHub,
-      Docker and AWS EC2.
-    </p>
   </div>
 </section>
 
@@ -78,68 +59,37 @@
   <p>Email: pathead08@gmail.com</p>
 
   <form id="contact-form">
-
-    <input
-      type="text"
-      name="name"
-      placeholder="Your Name"
-      required
-    >
-
-    <input
-      type="email"
-      name="email"
-      placeholder="Your Email"
-      required
-    >
-
-    <textarea
-      name="message"
-      placeholder="Your Message"
-      required
-    ></textarea>
-
-    <button type="submit">
-      Send Message
-    </button>
-
+    <input type="text" name="name" placeholder="Your Name" required><br><br>
+    
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    
+    <textarea name="message" placeholder="Your Message" required></textarea><br><br>
+    
+    <button type="submit">Send Message</button>
   </form>
 </section>
 
 <!-- SOCIAL -->
 <div class="social">
-  <a href="#">
-    <i class="fab fa-github"></i>
-  </a>
-
-  <a href="#">
-    <i class="fab fa-linkedin"></i>
-  </a>
+  <a href="#"><i class="fab fa-github"></i></a>
+  <a href="#"><i class="fab fa-linkedin"></i></a>
 </div>
 
 <!-- RESUME -->
 <section class="resume">
-  <a href="resume.pdf" download class="btn">
-    Download Resume
-  </a>
+  <a href="resume.pdf" download class="btn">Download Resume</a>
 </section>
 
 <!-- EMAILJS -->
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 <script>
-
-  /* =========================
-     EMAIL JS
-  ========================== */
-
   (function(){
     emailjs.init("iZ3YWd4LYwA6ZsQCS");
   })();
 
   document.getElementById("contact-form")
     .addEventListener("submit", function(e) {
-
       e.preventDefault();
 
       emailjs.sendForm(
@@ -147,20 +97,13 @@
         "template_jgd82a8",
         this
       ).then(() => {
-
         alert("Message Sent Successfully!");
-
       }, (error) => {
-
         alert("Failed to send message");
-
       });
-
   });
 
-  /* =========================
-     HERO TYPING ANIMATION
-  ========================== */
+  /* ===== HERO TYPING ANIMATION ===== */
 
   const roles = [
     "DevOps Engineer 🚀",
@@ -175,78 +118,33 @@
   let isDeleting = false;
 
   function typeEffect() {
-
-    const typing =
-      document.getElementById("typing");
+    const typing = document.getElementById("typing");
 
     if (i < roles.length) {
-
-      if (!isDeleting &&
-          j <= roles[i].length) {
-
-        currentText =
-          roles[i].substring(0, j++);
-
-      }
-
-      else if (isDeleting && j >= 0) {
-
-        currentText =
-          roles[i].substring(0, j--);
-
+      if (!isDeleting && j <= roles[i].length) {
+        currentText = roles[i].substring(0, j++);
+      } else if (isDeleting && j >= 0) {
+        currentText = roles[i].substring(0, j--);
       }
 
       typing.innerHTML = currentText;
 
       if (j === roles[i].length) {
-
         isDeleting = true;
-
         setTimeout(typeEffect, 1000);
-
         return;
       }
 
       if (j === 0) {
-
         isDeleting = false;
-
         i = (i + 1) % roles.length;
       }
     }
 
-    setTimeout(
-      typeEffect,
-      isDeleting ? 50 : 100
-    );
+    setTimeout(typeEffect, isDeleting ? 50 : 100);
   }
 
   typeEffect();
-
-  /* =========================
-     DARK LIGHT MODE
-  ========================== */
-
-  const toggleBtn =
-    document.getElementById("theme-toggle");
-
-  toggleBtn.addEventListener("click", () => {
-
-    document.body.classList.toggle("light-mode");
-
-    if (
-      document.body.classList.contains("light-mode")
-    ) {
-
-      toggleBtn.innerHTML = "☀️";
-
-    } else {
-
-      toggleBtn.innerHTML = "🌙";
-    }
-
-  });
-
 </script>
 
 </body>
