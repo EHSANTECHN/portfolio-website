@@ -33,8 +33,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo docker stop portfolio || true
-            sudo docker rm portfolio || true
+            sudo docker stop $(sudo docker ps -aq) || true
+            sudo docker rm $(sudo docker ps -aq) || true
+            sudo docker system prune -af || true
             sudo docker pull ehsantechn/portfolio
-            sudo docker image prune -af
             sudo docker run -d --name portfolio -p 80:80 ehsantechn/portfolio
