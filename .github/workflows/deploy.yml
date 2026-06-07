@@ -10,29 +10,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v2
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+      # Checkout Repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Build Docker Image
-      run: docker build -t ehsantechn/portfolio .
+      # Docker Hub Login
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Push Docker Image
-      run: docker push ehsantechn/portfolio
+      # Build Latest Docker Image
+      - name: Build Docker Image
+        run: docker build --no-cache -t ehsantechn/portfolio .
 
-    - name: Deploy to EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        script: |
-          sudo docker stop portfolio || true
-          sudo docker rm portfolio || true
-          sudo docker pull ehsantechn/portfolio
-          sudo docker run -d --name portfolio -p 80:80 ehsantechn/portfolio
+      # Push Image to Docker Hub
+      - name: Push Docker Image
+        run: docker push ehsantechn/portfolio
+
+      # Deploy on AWS EC2
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo docker stop portfolio || true
+            sudo docker rm portfolio || true
+            sudo docker pull ehsantechn/portfolio
+            sudo docker image prune -af
+            sudo docker run -d --name portfolio -p 80:80 ehsantechn/portfolio
