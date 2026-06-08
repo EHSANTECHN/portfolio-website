@@ -1,24 +1,63 @@
-# Deploy on EC2
-- name: Deploy to EC2
-  uses: appleboy/ssh-action@v1.0.3
-  with:
-    host: ${{ secrets.EC2_HOST }}
-    username: ubuntu
-    key: ${{ secrets.EC2_SSH_KEY }}
+name: Docker CI/CD
 
-    script: |
+on:
+push:
+branches:
+- main
 
-      # Stop old container
-      sudo docker stop portfolio || true
+jobs:
+deploy:
+runs-on: ubuntu-latest
 
-      # Remove old container
-      sudo docker rm portfolio || true
+```
+steps:
 
-      # Pull latest image
-      sudo docker pull ehsantechn/portfolio:${{ github.run_number }}
+  # Checkout repository
+  - name: Checkout Code
+    uses: actions/checkout@v4
 
-      # Run latest image
-      sudo docker run -d \
-      --name portfolio \
-      -p 80:80 \
-      ehsantechn/portfolio:${{ github.run_number }}
+  # Docker Hub Login
+  - name: Login to Docker Hub
+    uses: docker/login-action@v3
+    with:
+      username: ${{ secrets.DOCKER_USERNAME }}
+      password: ${{ secrets.DOCKER_PASSWORD }}
+
+  # Build Docker Image
+  - name: Build Docker Image
+    run: |
+      docker build --no-cache -t ehsantechn/portfolio:latest .
+
+  # Push Docker Image
+  - name: Push Docker Image
+    run: |
+      docker push ehsantechn/portfolio:latest
+
+  # Deploy to EC2
+  - name: Deploy to EC2
+    uses: appleboy/ssh-action@v1.0.3
+    with:
+      host: ${{ secrets.EC2_HOST }}
+      username: ubuntu
+      key: ${{ secrets.EC2_SSH_KEY }}
+
+      script: |
+
+        # Stop old container
+        sudo docker stop portfolio || true
+
+        # Remove old container
+        sudo docker rm portfolio || true
+
+        # Remove unused images
+        sudo docker image prune -af || true
+
+        # Pull latest image
+        sudo docker pull ehsantechn/portfolio:latest
+
+        # Run latest container
+        sudo docker run -d \
+          --name portfolio \
+          -p 80:80 \
+          ehsantechn/portfolio:latest
+```
