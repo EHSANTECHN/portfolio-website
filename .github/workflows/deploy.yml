@@ -1,4 +1,4 @@
-
+```yml
 name: Docker CI/CD
 
 on:
@@ -35,14 +35,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-
             docker stop portfolio || true
             docker rm -f portfolio || true
-
             docker pull ehsantechn/portfolio:latest
-
-            docker run -d \
-              --name portfolio \
-              -p 80:80 \
-              ehsantechn/portfolio:latest
-
+            docker run -d --name portfolio -p 80:80 ehsantechn/portfolio:latest
+```
