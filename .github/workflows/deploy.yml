@@ -37,7 +37,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
 
           script: |
-
             sudo docker stop portfolio || true
 
             sudo docker rm portfolio || true
