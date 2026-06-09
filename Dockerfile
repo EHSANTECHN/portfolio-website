@@ -1,9 +1,5 @@
-```dockerfile
+```dockerfile id="s9q2k1"
 FROM nginx:alpine
 
-WORKDIR /usr/share/nginx/html
-
-COPY . .
-
-EXPOSE 80
+COPY . /usr/share/nginx/html
 ```
