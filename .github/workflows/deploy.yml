@@ -27,6 +27,11 @@ jobs:
         run: |
           docker push ehsantechn/portfolio:latest
 
+      - name: Debug Secrets
+        run: |
+          echo "Host Exists: ${{ secrets.EC2_HOST != '' }}"
+          echo "Key Exists: ${{ secrets.EC2_SSH_KEY != '' }}"
+
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
